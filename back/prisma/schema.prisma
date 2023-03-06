@@ -9,3 +9,23 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String   
+}
+
+model Painting {
+  id        Int      @id @default(autoincrement())
+  name      String   
+  painterId Int    
+  painter   Painter  @relation(fields: [painterId], references: [id])  
+}
+
+model Painter {
+  id         Int      @id @default(autoincrement())
+  name       String   
+  image      String
+  paintings  Painting[]
+}
