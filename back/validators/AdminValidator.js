@@ -1,8 +1,8 @@
 import { z } from "zod";
 
-const adminValidator = z.object({
+const AdminValidator = z.object({
     email: z.string().email(),
     password: z.string(),
 });
 
-export { adminValidator };
+export { AdminValidator };
