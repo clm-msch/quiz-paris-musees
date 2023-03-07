@@ -13,19 +13,23 @@ datasource db {
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
-  password  String   
+  password  String   @db.VarChar(255)
 }
 
-model Painting {
-  id        Int      @id @default(autoincrement())
+model Paintings {
+  id        Int           @id @default(autoincrement())
+  painting_uuid String    @unique
   name      String   
-  painterId Int    
-  painter   Painter  @relation(fields: [painterId], references: [id])  
+  url       String        @db.VarChar(255)
+  painter_id Int    
+  painter   Painters      @relation(fields: [painter_id], references: [id])  
 }
 
-model Painter {
-  id         Int      @id @default(autoincrement())
-  name       String   
-  image      String
-  paintings  Painting[]
+model Painters {
+  id              Int      @id @default(autoincrement())
+  name            String   
+  image           String
+  date_of_birth   String
+  date_of_death   String
+  paintings       Paintings[]
 }
