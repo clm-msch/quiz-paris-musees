@@ -28,8 +28,5 @@ model Paintings {
 model Painters {
   id              Int      @id @default(autoincrement())
   name            String   
-  image           String
-  date_of_birth   String
-  date_of_death   String
   paintings       Paintings[]
 }
